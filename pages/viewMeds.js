@@ -103,14 +103,13 @@ function ViewNotes({ navigation }) {
                           {item.noteTime.slice(0, 2) +
                           ":" +
                           item.noteTime.slice(2, 4) +
-                          " - " +
-                          item.noteTitle}
+                          " - " + item.noteTitle }
                       </Text>
                       <Text style={{fontSize:20}}>{item.noteValue}</Text>
                     <View style={{flexDirection: "row", justifyContent: "space-around", paddingVertical: 5}}>
                         <Text >Repeat: {item.repeat}</Text>
                         <Text >Category: {item.category}</Text>
-                        <Text >Priority: {item.priority}</Text>
+                        <Text >Priority: {item.priority == 1 ? "Low" : item.priority == 2 ? "Mid" : "High"}</Text>
                     </View>
                     <View style={{flexDirection: "row", justifyContent: "space-around", paddingVertical: 5}}>
                         {renderSwitch(item.category)}

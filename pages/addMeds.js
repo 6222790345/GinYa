@@ -45,18 +45,24 @@ export default function AddMedsPage() {
     setTaskList((oldTasks) => [
           ...oldTasks,
           {
-              "key": taskList.length+1,
+             "key": taskList.length+1,
              "noteTitle": taskName,
-              "noteValue": taskDesc,
-              "noteTime": time,
-              "repeat": activeRep,
-              "category": activeCat,
-              "priority": activePri,
+             "noteValue": taskDesc,
+             "noteTime": time,
+             "repeat": activeRep,
+             "category": activeCat,
+             "priority": activePri,
 
             },
         ].sort((a, b) => {
-                         return a.noteTime - b.noteTime;
-                       }));
+              if(a.noteTime == b.noteTime){
+                 if (a.priority > b.priority){
+                     return -1}
+                 else{
+                     return 1}}
+             else{
+                 return a.noteTime - b.noteTime}
+            }));
     Alert.alert("Task Added", taskName+" : "+taskDesc);
     console.log(taskList);
   };
@@ -133,13 +139,13 @@ export default function AddMedsPage() {
                     Task Priority
                 </Text>
                 <View style={{ flexDirection:"row", alignItems:"space-around", flexWrap: "wrap"}}>
-                    <Button style={activePri=="Low"?styles.buttonActive:styles.button} title="low" mode='contained-tonal' textColor={activePri=="Low"?"white":"black"} onPress={() => setActivePri("Low")}>
+                    <Button style={activePri=="1"?styles.buttonActive:styles.button} title="low" mode='contained-tonal' textColor={activePri=="1"?"white":"black"} onPress={() => setActivePri("1")}>
                         Low
                     </Button>
-                    <Button style={activePri=="Mid"?styles.buttonActive:styles.button} title="mid" mode="elevated" textColor={activePri=="Mid"?"white":"black"} onPress={() => setActivePri("Mid")}>
+                    <Button style={activePri=="2"?styles.buttonActive:styles.button} title="mid" mode="elevated" textColor={activePri=="2"?"white":"black"} onPress={() => setActivePri("2")}>
                         Mid
                     </Button>
-                    <Button style={activePri=="High"?styles.buttonActive:styles.button} title="high" mode="elevated" textColor={activePri=="High"?"white":"black"} onPress={() => setActivePri("High")}>
+                    <Button style={activePri=="3"?styles.buttonActive:styles.button} title="high" mode="elevated" textColor={activePri=="3"?"white":"black"} onPress={() => setActivePri("3")}>
                         High
                     </Button>
                     <Button style={activePri=="Default"?styles.buttonActive:styles.button} title="+" mode="elevated" textColor={activePri=="Default"?"white":"black"} onPress={() => setActivePri("Default")}>

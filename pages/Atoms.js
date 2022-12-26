@@ -14,30 +14,36 @@ export const tasksList = atom({
                "noteTime": "0800",
                "repeat": "Daily",
                "category":"Hip",
-               "priority": "Low"
+               "priority": "1"
              },
              {
                "key": 2,
                "noteTitle": "Glaucoma",
                "noteValue": "Take 3 drops in each eye and wait for 5 minutes",
-               "noteTime": "1000",
+               "noteTime": "0800",
                "repeat": "Daily",
                "category":"Eye",
-               "priority": "High"
+               "priority": "3"
              },
              {
                "key": 3,
                "noteTitle": "Headache",
                "noteValue": "Take 1 tiffy after breakfast",
-               "noteTime": "0900",
+               "noteTime": "1100",
                "repeat": "Daily",
                "category":"Head",
-               "priority": "Medium"
+               "priority": "2"
              },
 
            ].sort((a, b) => {
-                                     return a.noteTime - b.noteTime;
-                                   })
+                 if(a.noteTime == b.noteTime){
+                    if (a.priority > b.priority){
+                        return -1}
+                    else{
+                        return 1}}
+                else{
+                    return a.noteTime - b.noteTime}
+               })
 });
 
 export const authenticateState = atom({

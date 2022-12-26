@@ -15,6 +15,10 @@ import { authenticateState } from "./Atoms";
 
 import RNPrint from 'react-native-print';
 
+import {
+  LineChart
+} from 'react-native-chart-kit'
+
 export default function RNPrintExample(){
   state = {
     selectedPrinter: null
@@ -55,9 +59,44 @@ export default function RNPrintExample(){
   }
     const [taskStatus] = useRecoilState(tasksStatus);
     const [authState, setAuthState] = useRecoilState(authenticateState);
+
+    const line = {
+          //labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          labels: ['Med A', 'Med B', 'Med C', 'Med D', 'Med E'],
+          datasets: [
+            {
+              //data: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'],
+              data: ['1000', '0500', '1500', '1800', '2200'],
+              strokeWidth: 2, // optional
+            },
+          ],
+        };
     return (
     <View style={{flex: 1}}>
-        <View style={{flex: 9}}>
+    <View style={{flex: 4, alignItems: "center"}}>
+      <LineChart
+        data={line}
+        width={380} // from react-native
+        height={220}
+        yAxisLabel={''}
+        chartConfig={{
+          backgroundColor: '#e26a00',
+          backgroundGradientFrom: '#fb8c00',
+          backgroundGradientTo: '#ffa726',
+          decimalPlaces: 0, // optional, defaults to 2dp
+          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+          style: {
+            borderRadius: 16
+          }
+        }}
+        bezier
+        style={{
+          marginVertical: 8,
+          borderRadius: 16
+        }}
+      />
+    </View>
+        <View style={{flex: 3}}>
             <FlatList
                 data={taskStatus}
                 renderItem={({ item }) => (

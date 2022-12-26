@@ -16,7 +16,6 @@ import { StyleSheet, TextInput, Button, Alert, ActivityIndicator } from 'react-n
 
 function Ginya(){
         return(
-
                 <NavigationContainer>
                   <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
                     <Tab.Screen options={{headerTintColor: "white", headerStyle: {backgroundColor: "#001D6E"}}} name="GinYa" component={ViewTasksFunc} />
